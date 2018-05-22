@@ -1,0 +1,5 @@
+﻿  ControlCenter.cpp
+c:\users\61726\desktop\minisql\minisql_project\sql\minisql\controlcenter.cpp(1967): warning C4101: “path_uniq”: 未引用的局部变量
+c:\users\61726\desktop\minisql\minisql_project\sql\minisql\controlcenter.cpp(1889): warning C4715: “getAttrType”: 不是所有的控件路径都返回值
+  miniSQL.vcxproj -> C:\Users\61726\Desktop\MiniSQL\MiniSQL_Project\SQL\Debug\miniSQL.exe
+  miniSQL.vcxproj -> C:\Users\61726\Desktop\MiniSQL\MiniSQL_Project\SQL\Debug\miniSQL.pdb (Full PDB)

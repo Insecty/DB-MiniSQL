@@ -1,0 +1,217 @@
+// 建立数据库
+create database abc;
+// 使用数据库
+use abc ;
+// 建表
+create table stu
+( 
+id int ,
+name char(20) unique,
+age int ,
+GPA float,
+primary key(id)
+);
+// 插入数据
+insert into stu values(1,"zhangsan",12,4.00);
+insert into stu values(2,"cqp",20,4.00);
+insert into stu values(3,"lcy",3,5.00);
+insert into stu values(4,"test",12,3.50);
+insert into stu values(5,"test1",15,3.20);
+insert into stu values(6,"test2",17,3.60);
+insert into stu values(7,"test3",19,3.90);
+insert into stu values(8,"test4",15,3.750);
+create index indextest on stu(GPA);
+// primary key检测
+insert into stu values(8,"test5",21,3.50);
+// unique属性检测
+insert into stu values(10,"test",18,3.50);
+// 插入数据的主码冲突检测（对主键自动建立索引）
+select name from stu where name = "lcy";
+select * from stu where name > "test";
+select * from stu;
+delete from stu where id = 3;
+select * from stu;
+delete from stu where GPA <= 4.00;
+select * from stu;
+select id,name from stu where id > 2;
+
+create table test
+(
+id int,
+address char(15),
+primary key(id)
+);
+insert into test values(1, "hangzhou");
+insert into test values(2, "xian");
+insert into test values(3, "beijing");
+insert into test values(4, "zhejiang");
+select * from test;
+
+// 验证drop database
+drop database abc;
+create database cba;
+use cba;
+drop database abc;
+use abc;
+
+// 验证drop index
+drop index indextest;
+// 不存在的索引
+drop index notexist;
+
+// 批量处理数据
+source C:\Users\61726\Desktop\MiniSQL\MiniSQL_Project\MiniSQL_Document\execfile.sql;
+exit;
+
+
+
+（1）创建数据库语句
+正确：
+  create database abc;
+错误：
+1.空字符串
+  create database ;		//空字符串
+2.以关键词作为数据库名字
+  create database create;		//以关键词作为数据库名字
+
+（2）使用数据库语句
+正确：
+  use abc ;
+错误： 
+1.不存在的数据库
+  use ??? ; //不存在的数据库			
+
+（3）创建数据表
+正确：
+create table stu
+( 
+id int ,
+name char(20) unique,
+age int ,
+GPA float,
+primary key(id)
+);
+
+错误：
+1.没有使用database 不能插入数据 
+
+2.缺少table名
+create table 			//缺少table名	
+( 
+id int ,
+name char(20) unique,
+age int ,
+GPA float,
+primary key(id)
+);
+
+3.内部符号错误
+create table stu
+( 
+id int ,
+name char(20) unique;		//内部符号错误
+age int ,
+GPA float,
+primary key(id)
+);
+
+4.缺少数据类型
+create table stu
+( 
+id int ,
+name char(20) unique,
+age ,				//缺少数据类型
+GPA float,
+primary key(id)
+);
+
+5.数据库名重复
+create table stu		//数据库名重复
+( 
+id int ,
+name char(20) unique,
+age int ,
+GPA float,
+primary key(id)
+);
+
+6.数据类型不存在
+create table stu		
+( 
+id int ,
+name char(20) unique,
+age long,			//数据类型不存在
+GPA float,
+primary key(id)
+);
+
+（4）执行文件
+正确：
+  source test.txt
+错误：
+1.不存在的文件
+  source tset.txt
+2.文件内有语句不可插入
+  unique 重复
+  primary key 重复
+
+（5）建立索引语句
+正确：
+create index name on stu(ID);
+
+（6）选择语句
+正确：
+select * from stu;
+select * from stu where id > 2 and age >= 18 and GPA > 4.0;
+select * from stu 
+where id > 2 
+and age >= 18 
+and GPA > 4.0;
+
+错误：
+1.不知名表、不知名属性
+select * from stu2 where id > 2 and age >= 18 and num > 10;
+
+
+（7）删除语句
+正确：
+delete from stu;
+delete from stu where id = 3;
+
+错误：
+1.不知名表、不知名属性
+delete from stu2 where id > 2;
+
+（8）删除索引语句
+正确：
+drop index name on stu;
+
+（9）删除数据库语句
+正确：
+drop database abc;
+
+（10）插入语句
+正确：
+insert into stu values(1,"zhangsan",12,4.00);
+insert into stu values(2,"lisi",18,3.96);
+insert into stu values(3,"wangwu",20,4.50);
+insert into stu values(4,"qinshihuang",198,2.0);
+
+错误：
+错误：
+1.不知名表
+insert into stu2 values(4,"qinshihuang",198,2.0);
+2.重复属性
+insert into stu values(2,"qinshihuang",198,2.0);
+3.数据过多
+insert into stu values(5,"qinshihuang",198,2.0，1000);
+
+
+
+
+
+
+
+
+
+
