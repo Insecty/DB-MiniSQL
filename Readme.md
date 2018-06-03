@@ -18,7 +18,7 @@ __压力测试__:压力测试所需要的10000条压力测试.txt文件在MiniSQ
 
 __团队成员__:
 
-Cai Qingpeng:   API & Interpreter & Catalog
+qp:   API & Interpreter & Catalog
 
-Liu Chunyi:   Record & Index & Buffer
+cy:   Record & Index & Buffer
 
